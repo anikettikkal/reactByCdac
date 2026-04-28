@@ -10,4 +10,4 @@ import Layout from "./Layout";
 // console.log(ReactDOM);
 
 
-ReactDOM.createRoot(document.getElementById("root")).render(Layout);
+ReactDOM.createRoot(document.getElementById("root")).render(<Layout></Layout>);

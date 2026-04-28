@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter,Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from '../src/Components/App';
 import Trending from '../src/Components/Trending';
 import Upcoming from '../src/Components/Upcoming';
