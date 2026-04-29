@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import axios from "axios";
 
 export default function Adduser() {
@@ -6,42 +6,56 @@ export default function Adduser() {
   let x2 = useRef();
   let x3 = useRef();
   let x4 = useRef();
+  let x5 = useRef();
+
   function myFunction(e) {
     e.preventDefault();
-    // console.log(x1, x2, x3);
-    // console.log(x1.current.value, x2.current.value, x3.current.value);
-    if (x1.current.value == "" || x2.current.value == "" || x3.current.value == "") {
-      x4.current.innerHTML = "All Fields Are Compulsory";
+
+    const name = x1.current.value;
+    const price = x2.current.value;
+    const discount = x3.current.value;
+    const description = x4.current.value;
+
+    if (!name || !price || !discount || !description) {
+      x5.current.innerHTML = "All Fields Are Compulsory";
+      return;
     }
-    else {
-      axios.post("http://localhost:8000/api/users", {
-        name: x1.current.value,
-        age: x2.current.value,
-        place: x3.current.value,
+
+    axios.post("http://localhost:9000/api/products", {
+      name,
+      price,
+      discount,
+      description
+    })
+      .then((res) => {
+        console.log(res.data);
+        x5.current.innerHTML = "Data Added Successfully!";
       })
-        .then((res) => {
-          console.log(res);  
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+      .catch((err) => {
+        console.log(err);
+        x5.current.innerHTML = "Error while adding data";
+      });
+
   }
+
 
   return (
     <div>
       <form onSubmit={myFunction} method='POST' action="/submit">
-        <input type="text" placeholder="Enter Name" ref={x1} />
+        <input type="text" placeholder="Enter Product Name" ref={x1} />
         <br /><br />
 
-        <input type="number" placeholder="Enter Age" ref={x2} />
+        <input type="number" placeholder="Enter Price" ref={x2} />
         <br /><br />
 
-        <input type="text" placeholder="Enter Place" ref={x3} />
+        <input type="number" placeholder="Enter discount" ref={x3} />
+        <br /><br />
+
+        <input type="text" placeholder="Enter description" ref={x4} />
         <br /><br />
 
         <button type="submit">Submit</button>
-        <p ref={x4}>
+        <p ref={x5}>
 
         </p>
       </form>

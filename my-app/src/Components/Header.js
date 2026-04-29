@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink,Link } from "react-router";
+import { NavLink, Link } from "react-router";
 
 function Header() {
     return (
@@ -17,6 +17,7 @@ function Header() {
                             </li>
                             <li class="nav-item">
                                 <Link class="nav-link" to="/login">Login</Link>
+
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -25,6 +26,15 @@ function Header() {
                                 <ul class="dropdown-menu">
                                     <li><Link class="dropdown-item" to="/adduser">Add User</Link></li>
                                     <li><Link class="dropdown-item" to="/showuser">Show User</Link></li>
+                                    <li><Link class="dropdown-item" to="/product">Products</Link></li>
+                                    <li><Link class="dropdown-item" to="/comp1">Comp1</Link></li>
+                                    <li><Link class="dropdown-item" to="/comp2">Comp2</Link></li>
+                                    <li><Link class="dropdown-item" to="/comp3">Comp3</Link></li>
+                                    <li><Link class="dropdown-item" to="/trending">Trending</Link></li>
+                                    <li><Link class="dropdown-item" to="/upcoming">Upcoming</Link></li>
+                                    <li><Link class="dropdown-item" to="/toprated">Top Rated</Link></li>
+                                    <li><Link class="dropdown-item" to="/comp4">Comp4</Link></li>
+
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><Link class="dropdown-item" to="/pagenotfound">Page Not Found</Link></li>
                                 </ul>
