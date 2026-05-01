@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from './Image'
+import {Link} from "react-router-dom"
 
 export default function Movie(props) {
   return (
@@ -9,6 +10,7 @@ export default function Movie(props) {
             <Image path={movie.poster_path}></Image>
             <h3>{movie.title}</h3>
             <p>{movie.overview}</p>
+            <p><Link to={`/movie/${movie.id}`}>View Movie</Link></p>
         </div>
     ))}
     </>

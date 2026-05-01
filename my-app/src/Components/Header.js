@@ -1,7 +1,22 @@
-import React from "react";
-import { NavLink, Link } from "react-router";
+import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink, Link, useNavigate } from "react-router";
+import { setMovieName } from "../redux/slices/DatatransferSlice";
 
 function Header() {
+    let x1= useRef();
+    let navigate = useNavigate();
+    let dispatch = useDispatch();
+    function myfunction(){
+        if(x1.current.value != ""){
+            dispatch(setMovieName(x1.current.value));
+            navigate("/search");
+        }
+        else{
+            alert("Please Enter a Movie Name");
+        }
+    }
+    
     return (
         <>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -19,6 +34,7 @@ function Header() {
                                 <Link class="nav-link" to="/login">Login</Link>
 
                             </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Dropdown
@@ -34,6 +50,10 @@ function Header() {
                                     <li><Link class="dropdown-item" to="/upcoming">Upcoming</Link></li>
                                     <li><Link class="dropdown-item" to="/toprated">Top Rated</Link></li>
                                     <li><Link class="dropdown-item" to="/comp4">Comp4</Link></li>
+                                    <li><Link class="dropdown-item" to="/comp6">Comp6</Link></li>
+                                    <li><Link class="dropdown-item" to="/comp21">Comp21</Link></li>
+                                    <li><Link class="dropdown-item" to="/comp31">Comp31</Link></li>
+
 
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><Link class="dropdown-item" to="/pagenotfound">Page Not Found</Link></li>
@@ -41,6 +61,10 @@ function Header() {
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                            </li>
+                            <li class="nav-item">
+                                <input type="text" name="" id="" placeholder="Search" ref={x1}/> &nbsp; &nbsp;
+                                <button onClick={myfunction} type="submit" className="btn btn-outline-info">Search</button>
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
